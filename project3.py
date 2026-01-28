@@ -1,7 +1,7 @@
 store = []
 
 while True:
-    print("\nWelcome to the student data organiszer!")
+    print("\nWelcome to the student data organiszer!\n")
 
     print("\nselect an option: ")
     print("Enter 1 to Add student")
@@ -28,6 +28,7 @@ while True:
         print("\nDetails added successfully!\n")
 
     elif choice == 2:
+        print("\nData of all Students: \n")
         for st in store:
             print(st)
 
