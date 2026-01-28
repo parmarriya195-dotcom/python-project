@@ -63,8 +63,6 @@ while True:
         for s in subjects:
             print(s)
 
-
-
     elif choice == 6:
         print("Thank You For Visiting!")
         break
