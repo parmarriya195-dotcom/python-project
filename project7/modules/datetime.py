@@ -39,7 +39,7 @@ def datetime_menu():
                 input("Press Enter to start stopwatch")
                 start = time.time()
                 input("Press Enter to stop stopwatch")
-                print("Elapsed Time:", round(time.time() - start, 2), "seconds")
+                print("Time:", round(time.time() - start, 2), "seconds")
 
             elif dchoice == 0:
                 break

@@ -4,6 +4,10 @@ class JournalManager:
 
     def __init__(self, filename="Journal.txt"):
         self.filename = filename
+        try:
+            open(self.filename, "x").close()
+        except FileExistsError:
+            pass
 
     def add_entry(self):
         print("Enter your Journal entry (press ENTER on empty line to finish):")
@@ -28,21 +32,24 @@ class JournalManager:
 
     def view_entries(self):
         try:
-            file = open(self.filename, "r")
-            content = file.read()
-            print(content)
-            file.close()
+            with open(self.filename, "r") as file:
+                content = file.read()
+                print(content)
         except FileNotFoundError:
             print("No journal entries found!")
+        except PermissionError:
+            print("Permission denied while accessing the file!")
 
     def search_entry(self):
         keyword = input("Enter a keyword or date to search: ")
         try:
             with open(self.filename, "r") as file:
+                content = file.read().split("\n\n")
                 found = False
-                for line in file:
-                    if keyword in line:
-                        print(line)
+                for entry in content:
+                    if keyword in entry:
+                        print(entry)
+                        print("-" * 40)
                         found = True
                 if not found:
                     print("No entries found for:", keyword)
@@ -53,10 +60,11 @@ class JournalManager:
     def delete_entries(self):
         confirm = input("Are you sure you want to delete all entries? (yes/no): ")
         if confirm.lower() == "yes":
-            open(self.filename, "w").close()
-            print("All entries deleted!")
-        else:
-            print("Delete operation cancelled.")
+            try:
+                open(self.filename, "w").close()
+                print("All entries deleted!")
+            except FileNotFoundError:
+                print("No journal entries to delete.")
 
 
     def menu(self):
