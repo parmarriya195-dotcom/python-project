@@ -9,7 +9,11 @@ def random_menu():
             print("Enter 4 to Generate random OTP")
             print("Enter 0 for go to the main menu!\n")
 
-            rchoice = int(input("Enter your choice: "))
+            try:
+                rchoice = int(input("Enter your choice: "))
+            except Exception:
+                    print("Invalid ianput!")
+                    continue
 
             if rchoice == 1:
                 print("Random Number:", random.randint(1, 1000))

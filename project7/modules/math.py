@@ -7,7 +7,11 @@ def math_menu():
                 print("Enter 2 to solved compound interest!")
                 print("Enter 0 for go to the main menu!\n")
 
-                mchoice = int(input("Enter your choice: "))
+                try:
+                    mchoice = int(input("Enter your choice: "))
+                except Exception:
+                    print("Invalid ianput!")
+                    continue
 
                 if mchoice == 1:
 

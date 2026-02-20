@@ -10,7 +10,11 @@ def datetime_menu():
             print("Enter 4 for stpowatch!")
             print("Enter 0 for go to main menu!\n")
 
-            dchoice = int(input("Enter your choice: "))
+            try: 
+                dchoice = int(input("Enter your choice: "))
+            except Exception:
+                print("Invalid ianput!")
+                continue
 
             if dchoice == 1:
                 now = datetime.datetime.now()

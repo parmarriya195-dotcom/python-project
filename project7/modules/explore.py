@@ -4,5 +4,5 @@ def explore_menu():
     try:
         module = __import__(module_name)
         print(dir(module))
-    except ModuleNotFoundError:
+    except Exception:
         print("Module not found")

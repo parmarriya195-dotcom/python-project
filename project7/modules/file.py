@@ -10,7 +10,11 @@ def file_menu():
             print("Enter 5 for delete file!")
             print("Enter 0 for go to the main menu!\n")
 
-            fchoice = int(input("Enter your choice: "))
+            try:
+                fchoice = int(input("Enter your choice: "))
+            except Exception:
+                print("Invalid ianput!")
+                continue
 
             if fchoice == 1:
                 name = input("Enter file name: ")
